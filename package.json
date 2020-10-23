@@ -1,0 +1,35 @@
+{
+	"name": "match-3-nem",
+	"version": "0.1.0",
+	"description": "Simple game",
+	"main": "index.js",
+	"repository": "https://ojg15@bitbucket.org/ojg15/match-3.git",
+	"author": "Ollie Grenfell <ojg15@uclive.ac.nz>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"prebuild": "rimraf build/assets/**",
+		"build": "webpack -p --bail && node copy-static.js && npm run clearBuildFiles",
+		"clearBuildFiles": "rimraf src/**/*.js src/**/*.js.map",
+		"package": "tar czf build.tar.gz build",
+		"quickbuild": "webpack -p --bail && npm run clearBuildFiles",
+		"start": "http-server build --cors -p 8080",
+		"test": "echo \"No Tests..\""
+	},
+	"dependencies": {
+		"http-server": "^0.12.1",
+		"phaser": "^3.22.0"
+	},
+	"devDependencies": {
+		"babel-core": "^6.0.0",
+		"babel-loader": "^7.0.0",
+		"babel-polyfill": "^6.0.16",
+		"babel-preset-env": "^1.7.0",
+		"fs-extra": "7.0.0",
+		"rimraf": "2.6.3",
+		"ts-loader": "4.5.0",
+		"typescript": "^3.8.3",
+		"webpack": "^4.17.1",
+		"webpack-cli": "^3.1.0"
+	}
+}
