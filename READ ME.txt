@@ -1,0 +1,3 @@
+What I added to this project:
+-New enemy that is coloured red this enemy takes two shots to kill
+-A simple effect when the enemy is hit
