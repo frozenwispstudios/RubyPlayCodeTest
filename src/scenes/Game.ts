@@ -151,7 +151,7 @@ export class GameScene extends Phaser.Scene {
 
 		this._ufos = this.physics.add.group({ collideWorldBounds: false	});
 		this._ufos.createMultiple({
-			frameQuantity: 3, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
+			frameQuantity: 5, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
 		});
 
 		//UFO BOSS Spawning
@@ -436,6 +436,32 @@ export class GameScene extends Phaser.Scene {
 	private async onMissileHit(missile: Missile, ufo: UFO) {
 		let xPos: number = ufo.x;
 		let yPos: number = ufo.y;
+
+
+		//if UFO is boss do boss else do UFO
+		//particles test
+		var particles = this.add.particles('ufo');
+		var emitter = particles.createEmitter({
+			alpha: { start: 1, end: 0 },
+			scale: { start: 0.5, end: 2.5 },
+			//tint: { start: 0xff945e, end: 0xff945e },
+			speed: 20,
+			accelerationY: -300,
+			angle: { min: -85, max: -95 },
+			rotate: { min: -180, max: 180 },
+			lifespan: { min: 600, max: 800 },
+			blendMode: 'ADD',
+			frequency: 200,
+			maxParticles: 3,
+			x: xPos,
+			y: yPos
+		});
+		//emitter.setPosition(xPos, yPos);
+		//emitter.setSpeed(200);
+		//emitter.setBlendMode(Phaser.BlendModes.ADD);
+
+		
+
 
 		ufo.kill();
 		if (this._powers[PowerType.UNSTOPABLE_MISSILES]) {
