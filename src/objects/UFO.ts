@@ -3,10 +3,14 @@ import { GameScene } from "../scenes/Game";
 export class UFO extends Phaser.Physics.Arcade.Sprite {
 
 	private _landY: number;
+	private _hp: number;
 
 	constructor (scene, x, y) {
 		super(scene, x, y, 'ufo');
 		this._landY = GameScene.height * 0.795;
+
+		//Health Init
+		this._hp = 1;
 
 		this.on('animationcomplete', () => {
 			this.setActive(false);
@@ -52,9 +56,14 @@ export class UFO extends Phaser.Physics.Arcade.Sprite {
 	}
 
 	public kill() {
-		this.setVelocityY(0);
+		//Loss health		
+		this._hp -=1;
 
-		this.scene.sound.play(`sfx/explode_${Math.floor(Math.random() * 5)}`, { volume: 2 });
-		this.play("ufo_killed");
+		//if death check
+		if(this._hp <= 0){
+			this.setVelocityY(0);
+			this.scene.sound.play(`sfx/explode_${Math.floor(Math.random() * 5)}`, { volume: 0 });
+			this.play("ufo_killed");
+		}
 	}
 }
