@@ -3,6 +3,7 @@ import { UFO } from '../objects/Ufo';
 import { Util } from '../util';
 import { LootBox } from '../objects/LootBox';
 import { UIPanel } from '../objects/UIPanel';
+import { UFOBoss } from '../objects/UFOBoss';
 
 export enum PowerType {
 	DOUBLE_FIRE = 0,
@@ -131,6 +132,9 @@ export class GameScene extends Phaser.Scene {
 		this.load.audio('sfx/explode_4', 'assets/sfx/explode_4.mp3');
 		this.load.audio('sfx/box_break', 'assets/sfx/box_break.mp3');
 		this.load.audio('sfx/bonus', 'assets/sfx/bonus.mp3');
+
+		//Benjaimns Imported images
+		this.load.spritesheet('ufoBoss', 'assets/ufoBoss.png', { frameWidth: 320, frameHeight: 128 });//set boss sprite here
 	}
 
 	public create(): void {
@@ -147,7 +151,13 @@ export class GameScene extends Phaser.Scene {
 
 		this._ufos = this.physics.add.group({ collideWorldBounds: false	});
 		this._ufos.createMultiple({
-			frameQuantity: 10, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
+			frameQuantity: 3, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
+		});
+
+		//UFO BOSS Spawning
+		this._ufos = this.physics.add.group({ collideWorldBounds: false	});
+		this._ufos.createMultiple({
+			frameQuantity: 2, key: "ufoBoss", frame: 0, visible: false, active: false, classType: UFOBoss
 		});
 
 		this._boxes = this.physics.add.group({ collideWorldBounds: false });
@@ -232,6 +242,14 @@ export class GameScene extends Phaser.Scene {
 			frames: this.anims.generateFrameNumbers("ufo", { start: 1, end: 4 }),
 			frameRate: 12
 		});
+
+		//UFO Boss Death Animation set
+		this.anims.create({
+			key: "ufoBoss_killed",
+			frames: this.anims.generateFrameNumbers("ufoBoss", { start: 1, end: 4 }),
+			frameRate: 12
+		});
+
 		this.anims.create({
 			key: "explode",
 			frames: this.anims.generateFrameNumbers("explosion", { start: 0, end: 6 }),
