@@ -23,7 +23,7 @@ export class Missile extends Phaser.Physics.Arcade.Sprite {
 
 		this.setVelocityY(-300);
 
-		this._sfx = this.scene.sound.add('sfx/launch', { volume: 0.5, loop: false });
+		this._sfx = this.scene.sound.add('sfx/launch', { volume: 0, loop: false });
 		this._sfx.play();
 	}
 

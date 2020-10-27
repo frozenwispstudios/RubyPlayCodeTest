@@ -17,7 +17,7 @@ export class LootBox extends Phaser.Physics.Arcade.Sprite {
 			let newPower: PowerType = Math.floor(Math.random() * 5) as PowerType;
 			console.log("POWER ACTIVATED:", PowerType[newPower]);
 
-			this.scene.sound.play('sfx/bonus', { volume: 3, loop: false });
+			this.scene.sound.play('sfx/bonus', { volume: 0, loop: false });
 
 			let bonus = this.scene.add.image(this.x, this.y, 'bonus_icons', newPower);
 			bonus.setOrigin(0.5);
@@ -72,7 +72,7 @@ export class LootBox extends Phaser.Physics.Arcade.Sprite {
 
 			if (this.y >= this._landY) {
 
-				this.scene.sound.play('sfx/box_break', { volume: 1, loop: false });
+				this.scene.sound.play('sfx/box_break', { volume: 0, loop: false });
 				this.setVelocityY(0);
 				this.play("box_break");
 			}

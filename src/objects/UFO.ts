@@ -47,7 +47,7 @@ export class UFO extends Phaser.Physics.Arcade.Sprite {
 			GameScene.GameRunning = false;
 
 			console.log("INVASION BEGINS! GAME OVER");
-			this.scene.sound.play('sfx/game_over', { volume: 2, loop: false });
+			this.scene.sound.play('sfx/game_over', { volume: 0, loop: false });
 
 			this.setActive(false);
 			this.setVelocityY(0);
