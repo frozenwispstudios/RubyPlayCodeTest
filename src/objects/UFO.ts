@@ -10,7 +10,6 @@ export class UFO extends Phaser.Physics.Arcade.Sprite {
 		super(scene, x, y, 'ufo');
 		this._landY = GameScene.height * 0.795;
 
-
 		//Health Init and UFO key
 		this._hp = 1;
 		this._key = "ufo"

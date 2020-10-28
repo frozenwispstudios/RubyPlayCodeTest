@@ -1,10 +1,11 @@
 import { GameScene } from "../scenes/Game";
 
-export class UFOBoss extends Phaser.Physics.Arcade.Sprite {
+export class UFOBoss extends Phaser.Physics.Arcade.Sprite  {
 
 	private _landY: number;
 	private _hp: number;
 	private _key: string;
+
 	constructor (scene, x, y) {
 		super(scene, x, y, 'ufoBoss');
 		this._landY = GameScene.height * 0.795;
@@ -30,7 +31,7 @@ export class UFOBoss extends Phaser.Physics.Arcade.Sprite {
 
 	public startLanding(x, y, speed) {
 		this.setFrame(0);
-		this.setScale(1,1);
+		this.setScale(0.7,0.7);
 		this.body.enable = true;
 		this.body.reset(x, y);
 
