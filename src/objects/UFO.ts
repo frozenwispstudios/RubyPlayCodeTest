@@ -4,13 +4,16 @@ export class UFO extends Phaser.Physics.Arcade.Sprite {
 
 	private _landY: number;
 	private _hp: number;
+	private _key: string;
 
 	constructor (scene, x, y) {
 		super(scene, x, y, 'ufo');
 		this._landY = GameScene.height * 0.795;
 
-		//Health Init
+
+		//Health Init and UFO key
 		this._hp = 1;
+		this._key = "ufo"
 
 		this.on('animationcomplete', () => {
 			this.setActive(false);
@@ -65,5 +68,9 @@ export class UFO extends Phaser.Physics.Arcade.Sprite {
 			this.scene.sound.play(`sfx/explode_${Math.floor(Math.random() * 5)}`, { volume: 0 });
 			this.play("ufo_killed");
 		}
+	}
+
+	public GetKey(){
+		return this._key;
 	}
 }
