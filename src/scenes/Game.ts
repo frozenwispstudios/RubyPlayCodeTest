@@ -134,7 +134,8 @@ export class GameScene extends Phaser.Scene {
 		this.load.audio('sfx/bonus', 'assets/sfx/bonus.mp3');
 
 		//Benjaimns Imported images
-		this.load.spritesheet('ufoBoss', 'assets/ufoBoss.png', { frameWidth: 320, frameHeight: 128 });//set boss sprite here
+		//this.load.spritesheet('ufoBoss', 'assets/ufoBoss.png', { frameWidth: 320, frameHeight: 128 });//set boss sprite here
+		this.load.spritesheet('ufoBoss', 'assets/ufoBossTest.png', { frameWidth: 400, frameHeight: 160 });//set boss sprite here
 	}
 
 	public create(): void {
@@ -150,14 +151,13 @@ export class GameScene extends Phaser.Scene {
 		});
 
 		//UFO BOSS Spawning
-		//this._ufos = this.physics.add.group({ collideWorldBounds: false	});
 		this._ufos = this.physics.add.group({ collideWorldBounds: false	});
 		this._ufos.createMultiple({
-			frameQuantity: 5, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
+			frameQuantity: 3, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
 		});
 
 		this._ufos.createMultiple({
-			frameQuantity: 2, key: "ufoBoss", frame: 0, visible: false, active: false, classType: UFOBoss
+			frameQuantity: 4, key: "ufoBoss", setScale: { x: 2, y: 2 }, frame: 0, visible: false, active: false, classType: UFOBoss
 		});
 
 		this._boxes = this.physics.add.group({ collideWorldBounds: false });
@@ -438,7 +438,7 @@ export class GameScene extends Phaser.Scene {
 		var particles = this.add.particles(_key);
 		var emitter = particles.createEmitter({
 			alpha: { start: 1, end: 0 },
-			scale: { start: 0.5, end: 2.5 },
+			scale: { start: 0.4, end: 0.8 },
 			//tint: { start: 0xff945e, end: 0xff945e },
 			speed: 20,
 			accelerationY: -300,
