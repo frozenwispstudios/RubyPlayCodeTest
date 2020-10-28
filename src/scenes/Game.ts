@@ -150,7 +150,7 @@ export class GameScene extends Phaser.Scene {
 			frameQuantity: 10, key: "missile", visible: false, active: false, classType: Missile
 		});
 
-		//UFO BOSS Spawning
+		//UFO Spawning
 		this._ufos = this.physics.add.group({ collideWorldBounds: false	});
 		this._ufos.createMultiple({
 			frameQuantity: 3, key: "ufo", frame: 0, visible: false, active: false, classType: UFO
