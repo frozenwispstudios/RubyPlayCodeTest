@@ -157,7 +157,7 @@ export class GameScene extends Phaser.Scene {
 		});
 
 		this._ufos.createMultiple({
-			frameQuantity: 4, key: "ufoBoss", setScale: { x: 2, y: 2 }, frame: 0, visible: false, active: false, classType: UFOBoss
+			frameQuantity: 4, key: "ufoBoss", frame: 0, visible: false, active: false, classType: UFOBoss
 		});
 
 		this._boxes = this.physics.add.group({ collideWorldBounds: false });

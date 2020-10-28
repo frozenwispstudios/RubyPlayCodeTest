@@ -30,6 +30,7 @@ export class UFOBoss extends Phaser.Physics.Arcade.Sprite {
 
 	public startLanding(x, y, speed) {
 		this.setFrame(0);
+		this.setScale(0.5,0.5);
 		this.body.enable = true;
 		this.body.reset(x, y);
 
